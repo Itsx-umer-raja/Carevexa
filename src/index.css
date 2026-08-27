@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-ink-950 text-mint/90 font-sans antialiased overflow-x-hidden;
+    background-image:
+      radial-gradient(1200px 800px at 80% -10%, rgba(47, 212, 181, 0.10), transparent 60%),
+      radial-gradient(900px 700px at -10% 20%, rgba(15, 118, 110, 0.14), transparent 55%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-white tracking-tight;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: rgba(47, 212, 181, 0.3);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #2fd4b5;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .glass {
+    @apply border border-white/10 bg-white/[0.03] backdrop-blur-xl;
+  }
+
+  .accent-text {
+    background: linear-gradient(100deg, #5fe0c9, #2fd4b5 45%, #a7f3e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-teal-brand/30
+           bg-teal-brand/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-teal-soft;
+  }
+}
+
+/* Thin, on-brand scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #04100f;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#0f766e, #2fd4b5);
+  border-radius: 99px;
+  border: 2px solid #04100f;
+}
+
+/* Lock scroll while the intro overlay is visible */
+body.intro-lock {
+  overflow: hidden;
+}
